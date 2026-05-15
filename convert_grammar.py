@@ -150,7 +150,8 @@ def convert_file(src_path, dst_rel):
                 html_parts.append("<ol>")
                 in_list = True
                 list_type = "ol"
-            html_parts.append(f"<li>{esc(m.group(2))}</li>")
+            content = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", esc(m.group(2)))
+            html_parts.append(f"<li>{content}</li>")
             i += 1
             continue
 
@@ -161,16 +162,16 @@ def convert_file(src_path, dst_rel):
                 html_parts.append("<ul>")
                 in_list = True
                 list_type = "ul"
-            html_parts.append(f"<li>{esc(m.group(1))}</li>")
+            content = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", esc(m.group(1)))
+            html_parts.append(f"<li>{content}</li>")
             i += 1
             continue
 
         # 其他
         close_list()
-        # 处理内联格式
+        # 处理内联格式：只保留加粗，去掉斜体转换
         text = esc(line)
         text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
-        text = re.sub(r"_(.+?)_", r"<em>\1</em>", text)
         if text.strip():
             html_parts.append(f"<p>{text}</p>")
         i += 1
