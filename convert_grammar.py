@@ -87,6 +87,13 @@ def convert_file(src_path, dst_rel):
         return t
 
     i = 0
+    # 跳过 YAML 头信息（--- 开头 --- 结尾）
+    if i < len(lines) and re.match(r"^---\s*$", lines[i]):
+        i += 1
+        while i < len(lines) and not re.match(r"^---\s*$", lines[i]):
+            i += 1
+        i += 1  # 跳过结束的 ---
+
     while i < len(lines):
         line = lines[i]
 
