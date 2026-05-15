@@ -131,12 +131,16 @@ def convert_file(src_path, dst_rel):
                 i += 1
                 continue
             parts = [c.strip() for c in line.split("|") if c.strip() != ""]
+            # 对每个单元格应用加粗转换
+            def fmt_cell(c):
+                return re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", esc(c))
+            cells = "</td><td>".join(fmt_cell(p) for p in parts)
             if not in_table:
                 html_parts.append("<table>")
-                html_parts.append("<tr><td>" + "</td><td>".join(esc(p) for p in parts) + "</td></tr>")
+                html_parts.append(f"<tr><td>{cells}</td></tr>")
                 in_table = True
             else:
-                html_parts.append("<tr><td>" + "</td><td>".join(esc(p) for p in parts) + "</td></tr>")
+                html_parts.append(f"<tr><td>{cells}</td></tr>")
             i += 1
             continue
         else:
