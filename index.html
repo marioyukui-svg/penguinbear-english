@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PenguinBear English · 小熊小企鹅英语语法</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f4f0; color: #2d2d2d; line-height: 1.8;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #5a3e2b 0%, #7a604a 50%, #4a7c5e 100%);
+    color: #fff; padding: 60px 30px 50px; text-align: center;
+  }
+  .header .icons { font-size: 48px; margin-bottom: 15px; letter-spacing: 12px; }
+  .header h1 { font-size: 34px; font-weight: 700; letter-spacing: 2px; }
+  .header p { font-size: 16px; opacity: 0.85; margin-top: 10px; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+  /* Container */
+  .container { max-width: 920px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* Section Title */
+  .section-title {
+    font-size: 22px; color: #4a7c5e; margin: 45px 0 20px;
+    padding-bottom: 10px; border-bottom: 3px solid #d4e4d6;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-title .emoji { font-size: 26px; }
+
+  /* Book Cards */
+  .book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 10px; }
+  .book-card {
+    background: #fff; border-radius: 14px; padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06); cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #eee;
+    text-decoration: none; display: block;
+  }
+  .book-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+  .book-card .icon { font-size: 36px; margin-bottom: 8px; }
+  .book-card h3 { font-size: 18px; color: #5a3e2b; }
+  .book-card p { font-size: 14px; color: #888; margin-top: 4px; }
+
+  /* Grammar Grid */
+  .grammar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 10px; }
+  .grammar-card {
+    background: #fff; border-radius: 10px; padding: 16px 20px;
+    border: 1px solid #eee; text-decoration: none; display: block;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .grammar-card:hover { background: #f0f7f2; transform: translateX(4px); }
+  .grammar-card .title { font-size: 15px; color: #3d5a4f; font-weight: 600; }
+  .grammar-card .desc { font-size: 12px; color: #999; margin-top: 2px; }
+
+  /* Footer */
+  .footer { text-align: center; color: #aaa; font-size: 13px; padding: 40px 0 20px; border-top: 1px solid #e5e5e5; margin-top: 50px; }
+
+  @media (max-width: 640px) {
+    .book-grid { grid-template-columns: 1fr; }
+    .grammar-grid { grid-template-columns: 1fr; }
+    .header { padding: 40px 20px 35px; }
+    .header h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="icons">🐻 🐧 ✨</div>
+  <h1>PenguinBear English</h1>
+  <p>和小熊小企鹅一起学语法 · 从小学到高考的语法宝库</p>
+</div>
+
+<div class="container">
+
+  <!-- 语法教材 -->
+  <div class="section-title"><span class="emoji">📖</span> 语法教材</div>
+  <div class="book-grid">
+    <a class="book-card" href="books/和小熊小企鹅学语法_第一册.html" target="_blank">
+      <div class="icon">🐻</div>
+      <h3>和小熊小企鹅学语法 · 第一册</h3>
+      <p>基础入门篇 · 适合小学中低年级</p>
+    </a>
+    <a class="book-card" href="books/和小熊小企鹅学语法_第二册.html" target="_blank">
+      <div class="icon">🐧</div>
+      <h3>和小熊小企鹅学语法 · 第二册</h3>
+      <p>进阶篇 · 适合小学高年级</p>
+    </a>
+  </div>
+
+  <!-- 小学语法 -->
+  <div class="section-title"><span class="emoji">📘</span> 小学语法练习</div>
+  <div class="grammar-grid">
+    <a class="grammar-card" href="elementary/be动词的用法.html"><div class="title">be 动词的用法</div><div class="desc">am / is / are 入门</div></a>
+    <a class="grammar-card" href="elementary/can的用法.html"><div class="title">can 的用法</div><div class="desc">情态动词基础</div></a>
+    <a class="grammar-card" href="elementary/have_got的用法.html"><div class="title">have got 的用法</div><div class="desc">"有"的表达</div></a>
+    <a class="grammar-card" href="elementary/like_doing类动词.html"><div class="title">like doing 类动词</div><div class="desc">喜欢做某事</div></a>
+    <a class="grammar-card" href="elementary/一般现在时态.html"><div class="title">一般现在时态</div><div class="desc">经常发生的动作</div></a>
+    <a class="grammar-card" href="elementary/第三人称单数.html"><div class="title">第三人称单数 + s 规则</div><div class="desc">动词加 s / es</div></a>
+    <a class="grammar-card" href="elementary/正在进行时态.html"><div class="title">现在进行时态</div><div class="desc">正在发生的动作</div></a>
+    <a class="grammar-card" href="elementary/过去式专项训练.html"><div class="title">过去式专项训练</div><div class="desc">动词过去式变化</div></a>
+    <a class="grammar-card" href="elementary/动词的过去式练习.html"><div class="title">动词过去式练习</div><div class="desc">规则与不规则变化</div></a>
+    <a class="grammar-card" href="elementary/将来时态_begoingto_will.html"><div class="title">将来时态</div><div class="desc">be going to vs will</div></a>
+    <a class="grammar-card" href="elementary/比较级和最高级.html"><div class="title">比较级和最高级</div><div class="desc">形容词比较</div></a>
+    <a class="grammar-card" href="elementary/物主代词.html"><div class="title">物主代词</div><div class="desc">my / your / his / her / its / our / their</div></a>
+    <a class="grammar-card" href="elementary/反身代词练习.html"><div class="title">反身代词</div><div class="desc">myself / yourself / himself 等</div></a>
+    <a class="grammar-card" href="elementary/介词专项训练.html"><div class="title">介词专项训练</div><div class="desc">in / on / at / under 等</div></a>
+    <a class="grammar-card" href="elementary/词性转换.html"><div class="title">词性转换</div><div class="desc">名词 ↔ 形容词 ↔ 副词</div></a>
+    <a class="grammar-card" href="elementary/频率副词.html"><div class="title">频率副词</div><div class="desc">always / usually / sometimes / never</div></a>
+    <a class="grammar-card" href="elementary/疑问词专项训练.html"><div class="title">疑问词专项训练</div><div class="desc">what / where / when / who / why / how</div></a>
+    <a class="grammar-card" href="elementary/移动介词.html"><div class="title">移动介词</div><div class="desc">prepositions of movement</div></a>
+  </div>
+
+  <!-- 中学语法 -->
+  <div class="section-title"><span class="emoji">📙</span> 中学语法进阶</div>
+  <div class="grammar-grid">
+    <a class="grammar-card" href="middle/定语从句练习.html"><div class="title">定语从句</div><div class="desc">who / which / that / whose</div></a>
+    <a class="grammar-card" href="middle/被动语态.html"><div class="title">被动语态</div><div class="desc">be + 过去分词</div></a>
+    <a class="grammar-card" href="middle/状语从句练习.html"><div class="title">状语从句</div><div class="desc">时间 / 条件 / 原因 / 让步</div></a>
+    <a class="grammar-card" href="middle/一般过去时和过去进行时.html"><div class="title">过去时 vs 过去进行时</div><div class="desc">时态对比</div></a>
+    <a class="grammar-card" href="middle/and和but的区别.html"><div class="title">and vs but</div><div class="desc">并列与转折</div></a>
+  </div>
+
+</div>
+
+<div class="footer">
+  PenguinBear English · 璇璇的英语语法宝库 🐻 🐧
+</div>
+
+</body>
+</html>
