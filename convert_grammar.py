@@ -79,6 +79,13 @@ def convert_file(src_path, dst_rel):
             html_parts.append(f"</{list_type}>")
             in_list = False
 
+    def inline(text):
+        """处理内联格式：加粗 + 高亮"""
+        t = esc(text)
+        t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
+        t = re.sub(r"==(.+?)==", r"<mark>\1</mark>", t)
+        return t
+
     i = 0
     while i < len(lines):
         line = lines[i]
@@ -133,7 +140,7 @@ def convert_file(src_path, dst_rel):
             parts = [c.strip() for c in line.split("|") if c.strip() != ""]
             # 对每个单元格应用加粗转换
             def fmt_cell(c):
-                return re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", esc(c))
+                return inline(c)
             cells = "</td><td>".join(fmt_cell(p) for p in parts)
             if not in_table:
                 html_parts.append("<table>")
@@ -154,7 +161,7 @@ def convert_file(src_path, dst_rel):
                 html_parts.append("<ol>")
                 in_list = True
                 list_type = "ol"
-            content = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", esc(m.group(2)))
+            content = inline(m.group(2))
             html_parts.append(f"<li>{content}</li>")
             i += 1
             continue
@@ -166,16 +173,15 @@ def convert_file(src_path, dst_rel):
                 html_parts.append("<ul>")
                 in_list = True
                 list_type = "ul"
-            content = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", esc(m.group(1)))
+            content = inline(m.group(1))
             html_parts.append(f"<li>{content}</li>")
             i += 1
             continue
 
         # 其他
         close_list()
-        # 处理内联格式：只保留加粗，去掉斜体转换
-        text = esc(line)
-        text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
+        # 处理内联格式
+        text = inline(line)
         if text.strip():
             html_parts.append(f"<p>{text}</p>")
         i += 1
@@ -223,6 +229,7 @@ def convert_file(src_path, dst_rel):
   .back {{ display: inline-block; margin-top: 30px; color: #4a7c5e; text-decoration: none; font-size: 14px; }}
   .back:hover {{ text-decoration: underline; }}
   strong {{ color: #8b4513; }}
+  mark {{ background: #fff3cd; padding: 0 4px; border-radius: 3px; color: #333; }}
   @media (max-width: 600px) {{ body {{ padding: 24px 16px 60px; }} }}
 </style>
 </head>
